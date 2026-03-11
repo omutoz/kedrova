@@ -1,0 +1,62 @@
+/* ═══════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════ */
+
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 72px var(--padding-x) 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(26, 35, 50, 0.6) 0%, var(--bg-primary) 70%);
+  pointer-events: none; z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+.hero-art {
+  width: min(572px, 80vw); height: min(572px, 80vw);
+  border-radius: 8px; overflow: hidden; position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 0 120px rgba(200, 169, 96, 0.06);
+  margin-bottom: 8px;
+}
+.hero-art img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero-play-btn {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 32px;
+  font-family: var(--font-body); font-size: var(--caption); font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light);
+  background: rgba(11, 17, 32, 0.65); backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 2px;
+  cursor: pointer; transition: all 0.3s var(--ease); z-index: 3;
+}
+.hero-play-btn:hover {
+  background: var(--gold); color: var(--bg-primary);
+  border-color: var(--gold);
+}
+.hero-play-btn svg { width: 14px; height: 14px; fill: currentColor; }
+.hero-name {
+  font-family: var(--font-display); font-size: var(--h1); font-weight: 300;
+  letter-spacing: 0.25em; color: var(--text-light); text-transform: uppercase; line-height: 1;
+}
+.hero-tagline {
+  font-family: var(--font-body); font-size: var(--caption); font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-top: -8px;
+}
+
+.hero-scroll-hint {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: var(--small); letter-spacing: 0.1em;
+  animation: float 3s ease-in-out infinite;
+}
+.hero-scroll-hint .line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-muted), transparent); }
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}

@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════
+   DESIGN SYSTEM — Variables & Themes
+   ═══════════════════════════════════════ */
+
+:root {
+  --bg-primary: #0B1120;
+  --bg-secondary: #111827;
+  --bg-elevated: #1A2332;
+  --bg-light: #F5F2ED;
+  --bg-white: #FFFFFF;
+  --gold: #C8A960;
+  --gold-dim: rgba(200, 169, 96, 0.15);
+  --gold-hover: #D4B870;
+  --text-light: #E8E4DF;
+  --text-muted: #8494A7;
+  --text-dark: #1A1A1A;
+  --text-dark-muted: #5A5A5A;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --h1: 3.5rem;
+  --h2: 3rem;
+  --h3: 1.5rem;
+  --body: 1.0625rem;
+  --caption: 0.8125rem;
+  --small: 0.75rem;
+  --max-width: 1240px;
+  --padding-x: 32px;
+  --section-gap: 140px;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 0.6s;
+}
+
+/* ═══════════════════════════════════════
+   LIGHT THEME
+   ═══════════════════════════════════════ */
+
+body.theme-light {
+  --bg-primary: #F5F2ED;
+  --bg-secondary: #F5F2ED;
+  --bg-elevated: #FFFFFF;
+  --bg-light: #0B1120;
+  --bg-white: #FFFFFF;
+  --gold-dim: rgba(200, 169, 96, 0.12);
+  --text-light: #1A1A1A;
+  --text-muted: #5A5A5A;
+  --text-dark: #1A1A1A;
+  --text-dark-muted: #5A5A5A;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.12);
+}
+
+body.theme-light .header {
+  background-color: rgba(245, 242, 237, 0.78);
+}
+body.theme-light .header.scrolled {
+  background-color: rgba(245, 242, 237, 0.94);
+}
+body.theme-light .hero::before {
+  background: radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.45) 0%, var(--bg-primary) 72%);
+}
+body.theme-light .video-label,
+body.theme-light .disco-meta,
+body.theme-light .tour-empty p,
+body.theme-light .tour-empty .tour-contact,
+body.theme-light .about-bio,
+body.theme-light .footer-brand p,
+body.theme-light .footer-links a,
+body.theme-light .footer-bottom,
+body.theme-light .hero-tagline,
+body.theme-light .header-nav a,
+body.theme-light .lang-toggle,
+body.theme-light .hero-scroll-hint {
+  color: var(--text-muted);
+}
+body.theme-light .header-nav a:hover,
+body.theme-light .header-logo-text,
+body.theme-light .hero-name,
+body.theme-light .section-music h2,
+body.theme-light .subsection-title,
+body.theme-light .footer-col-title,
+body.theme-light .tour-empty .tour-contact a {
+  color: var(--text-light);
+}
+body.theme-light .hero-play-btn,
+body.theme-light .gallery-lightbox-close,
+body.theme-light .gallery-lightbox-prev,
+body.theme-light .gallery-lightbox-next,
+body.theme-light .modal-close {
+  color: var(--text-light);
+}
+body.theme-light .disco-overlay,
+body.theme-light .gallery-item::after {
+  background: linear-gradient(to top, rgba(245, 242, 237, 0.3), rgba(245, 242, 237, 0));
+}
+body.theme-light .footer {
+  border-top-color: var(--border-subtle);
+}
+body.theme-light .hero,
+body.theme-light .section-media,
+body.theme-light .section-tour,
+body.theme-light .footer {
+  background: #F5F2ED;
+}
+body.theme-light .section-music,
+body.theme-light .section-about,
+body.theme-light .section-press,
+body.theme-light .gallery-section {
+  background: #EEE8DF;
+}
+body.theme-light .section-media {
+  padding-bottom: 14px;
+}
+body.theme-light .section-about {
+  margin-top: -14px;
+  padding-top: calc(var(--section-gap) - 36px);
+}
+body.theme-light .press-card {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+body.theme-light .press-quote {
+  color: var(--text-dark);
+}
+body.theme-light .press-source,
+body.theme-light .press-more a {
+  color: var(--text-dark-muted);
+  border-bottom-color: var(--text-dark-muted);
+}
+body.theme-light .gallery-scroll-indicator-arrow::before,
+body.theme-light .gallery-scroll-indicator-arrow::after {
+  border-top-color: rgba(26, 26, 26, 0.7);
+  border-right-color: rgba(26, 26, 26, 0.7);
+}
+body.theme-light .gallery-scroll-indicator-line {
+  background: linear-gradient(to right, transparent, rgba(26, 26, 26, 0.32), transparent);
+}
+body.theme-light .hamburger span {
+  background: var(--text-light);
+}

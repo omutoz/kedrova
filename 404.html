@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — K.E.D.R.O.V.A</title>
+<meta name="theme-color" content="#0B1120">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/variables.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+.page-404 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px var(--padding-x);
+  gap: 24px;
+}
+.page-404-logo { width: 64px; height: 64px; border-radius: 50%; background: #000; border: 1px solid rgba(200,169,96,0.2); }
+.page-404-code { font-family: var(--font-display); font-size: 8rem; font-weight: 300; color: var(--text-light); line-height: 1; letter-spacing: 0.05em; }
+.page-404-text { font-size: var(--body); color: var(--text-muted); }
+.page-404-link {
+  font-size: var(--caption); font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: opacity 0.3s ease;
+}
+.page-404-link:hover { opacity: 0.7; }
+</style>
+</head>
+<body>
+<main class="page-404">
+  <img class="page-404-logo" src="assets/images/logo_01.png" alt="K.E.D.R.O.V.A" width="64" height="64">
+  <div class="page-404-code">404</div>
+  <p class="page-404-text">Сторінку не знайдено / Page not found</p>
+  <a href="index.html" class="page-404-link">← На головну / Home</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* ═══════════════════════════════════════
+   TOUR
+   ═══════════════════════════════════════ */
+
+.section-tour { padding: var(--section-gap) 0; background: var(--bg-primary); }
+.tour-empty { text-align: center; }
+.tour-empty p { font-size: var(--body); color: var(--text-muted); margin-bottom: 12px; }
+.tour-contact { font-size: var(--caption); }
+.tour-contact a {
+  color: var(--gold); border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+}
+.tour-contact a:hover { border-bottom-color: var(--gold); }
