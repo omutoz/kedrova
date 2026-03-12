@@ -112,70 +112,25 @@
   var galleryCurrentIndex = 0;
   var galleryTargetScroll = 0;
   var galleryScrollRaf = 0;
-  var galleryLoopSpan = 0;
-  var galleryLoopReady = false;
-  var galleryOriginalItems = [];
+  var galleryLightboxFigure = galleryLightbox ? galleryLightbox.querySelector('.gallery-lightbox-figure') : null;
 
   function getGalleryMaxScroll() {
     if (!galleryTrack) return 0;
     return Math.max(0, galleryTrack.scrollWidth - galleryTrack.clientWidth);
   }
 
-  function measureGalleryLoopSpan() {
-    if (!galleryTrack || !galleryOriginalItems.length) return 0;
-    var styles = window.getComputedStyle(galleryTrack);
-    var gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-    var total = 0;
-    for (var gi = 0; gi < galleryOriginalItems.length; gi++) {
-      total += galleryOriginalItems[gi].getBoundingClientRect().width;
-      if (gi < galleryOriginalItems.length - 1) {
-        total += gap;
-      }
-    }
-    return Math.round(total);
-  }
-
-  function normalizeGalleryTarget(value) {
-    if (!galleryLoopReady || !galleryLoopSpan) return Math.max(0, value);
-    var normalized = value;
-    while (normalized < galleryLoopSpan) {
-      normalized += galleryLoopSpan;
-    }
-    while (normalized >= galleryLoopSpan * 2) {
-      normalized -= galleryLoopSpan;
-    }
-    return normalized;
-  }
-
-  function normalizeGalleryLoop() {
-    if (!galleryTrack || !galleryLoopReady || !galleryLoopSpan) return;
-    var loopStart = galleryLoopSpan;
-    var loopEnd = galleryLoopSpan * 2;
-    var current = galleryTrack.scrollLeft;
-
-    if (current <= 1) {
-      galleryTrack.scrollLeft = current + galleryLoopSpan;
-      galleryTargetScroll = normalizeGalleryTarget(galleryTargetScroll + galleryLoopSpan);
-    } else if (current >= loopEnd - 1) {
-      galleryTrack.scrollLeft = current - galleryLoopSpan;
-      galleryTargetScroll = normalizeGalleryTarget(galleryTargetScroll - galleryLoopSpan);
-    }
-  }
-
   function runGalleryMomentum() {
     if (!galleryTrack) return;
     var maxScroll = getGalleryMaxScroll();
-    galleryTargetScroll = galleryLoopReady ? normalizeGalleryTarget(galleryTargetScroll) : Math.min(maxScroll, Math.max(0, galleryTargetScroll));
+    galleryTargetScroll = Math.min(maxScroll, Math.max(0, galleryTargetScroll));
     var diff = galleryTargetScroll - galleryTrack.scrollLeft;
     if (Math.abs(diff) < 0.5) {
       galleryTrack.scrollLeft = galleryTargetScroll;
-      normalizeGalleryLoop();
       galleryScrollRaf = 0;
       updateGalleryProgress();
       return;
     }
     galleryTrack.scrollLeft += diff * 0.28;
-    normalizeGalleryLoop();
     updateGalleryProgress();
     galleryScrollRaf = window.requestAnimationFrame(runGalleryMomentum);
   }
@@ -183,7 +138,7 @@
   function queueGalleryScroll(delta) {
     if (!galleryTrack) return;
     var maxScroll = getGalleryMaxScroll();
-    galleryTargetScroll = galleryLoopReady ? normalizeGalleryTarget(galleryTargetScroll + delta) : Math.min(maxScroll, Math.max(0, galleryTargetScroll + delta));
+    galleryTargetScroll = Math.min(maxScroll, Math.max(0, galleryTargetScroll + delta));
     if (!galleryScrollRaf) {
       galleryScrollRaf = window.requestAnimationFrame(runGalleryMomentum);
     }
@@ -191,7 +146,6 @@
 
   function syncGalleryScrollTarget() {
     if (!galleryTrack) return;
-    normalizeGalleryLoop();
     galleryTargetScroll = galleryTrack.scrollLeft;
     updateGalleryProgress();
   }
@@ -200,11 +154,8 @@
 
   function updateGalleryProgress() {
     if (!galleryTrack || !galleryProgressHost) return;
-    var effectiveScroll = galleryTrack.scrollLeft;
-    if (galleryLoopReady && galleryLoopSpan > 0) {
-      effectiveScroll = ((effectiveScroll - galleryLoopSpan) % galleryLoopSpan + galleryLoopSpan) % galleryLoopSpan;
-    }
-    var progress = galleryLoopSpan > 0 ? (effectiveScroll / galleryLoopSpan) * 100 : 0;
+    var maxScroll = getGalleryMaxScroll();
+    var progress = maxScroll > 0 ? (galleryTrack.scrollLeft / maxScroll) * 100 : 0;
     progress = Math.max(0, Math.min(100, progress));
     galleryProgressHost.style.setProperty('--gallery-progress', progress + '%');
   }
@@ -245,7 +196,6 @@
 
   if (galleryTrack) {
     var originalItems = Array.prototype.slice.call(galleryTrack.querySelectorAll('.gallery-item'));
-    galleryOriginalItems = originalItems.slice();
 
     for (var oi = 0; oi < originalItems.length; oi++) {
       var originalButton = originalItems[oi].querySelector('button');
@@ -258,52 +208,6 @@
           src: originalImage.getAttribute('src'),
           alt: originalImage.getAttribute('alt') || 'KEDROVA'
         });
-      }
-    }
-
-    if (originalItems.length) {
-      var prependFragment = document.createDocumentFragment();
-      var appendFragment = document.createDocumentFragment();
-
-      for (var pi = 0; pi < originalItems.length; pi++) {
-        var prependClone = originalItems[pi].cloneNode(true);
-        var prependButton = prependClone.querySelector('button');
-        if (prependButton) {
-          prependButton.setAttribute('data-gallery-real-index', String(pi));
-          prependButton.setAttribute('tabindex', '-1');
-        }
-        prependClone.setAttribute('aria-hidden', 'true');
-        prependFragment.appendChild(prependClone);
-
-        var appendClone = originalItems[pi].cloneNode(true);
-        var appendButton = appendClone.querySelector('button');
-        if (appendButton) {
-          appendButton.setAttribute('data-gallery-real-index', String(pi));
-          appendButton.setAttribute('tabindex', '-1');
-        }
-        appendClone.setAttribute('aria-hidden', 'true');
-        appendFragment.appendChild(appendClone);
-      }
-
-      galleryTrack.insertBefore(prependFragment, galleryTrack.firstChild);
-      galleryTrack.appendChild(appendFragment);
-
-      function initializeGalleryLoop() {
-        galleryLoopSpan = measureGalleryLoopSpan();
-        galleryLoopReady = galleryLoopSpan > 0;
-        if (galleryLoopReady) {
-          galleryTrack.scrollLeft = galleryLoopSpan;
-          galleryTargetScroll = galleryLoopSpan;
-          updateGalleryProgress();
-        }
-      }
-
-      window.requestAnimationFrame(initializeGalleryLoop);
-      for (var ii = 0; ii < galleryOriginalItems.length; ii++) {
-        var loopImage = galleryOriginalItems[ii].querySelector('img');
-        if (loopImage && !loopImage.complete) {
-          loopImage.addEventListener('load', initializeGalleryLoop, { passive: true });
-        }
       }
     }
 
@@ -334,12 +238,9 @@
     window.addEventListener('resize', function() {
       window.cancelAnimationFrame(galleryScrollRaf);
       galleryScrollRaf = 0;
-      if (galleryLoopReady) {
-        var relativeOffset = ((galleryTargetScroll - galleryLoopSpan) % galleryLoopSpan + galleryLoopSpan) % galleryLoopSpan;
-        galleryLoopSpan = measureGalleryLoopSpan();
-        galleryTrack.scrollLeft = galleryLoopSpan + relativeOffset;
-        galleryTargetScroll = galleryTrack.scrollLeft;
-      }
+      var maxScroll = getGalleryMaxScroll();
+      galleryTrack.scrollLeft = Math.min(maxScroll, galleryTrack.scrollLeft);
+      galleryTargetScroll = galleryTrack.scrollLeft;
       syncGalleryScrollTarget();
     }, { passive: true });
   }
@@ -378,6 +279,26 @@
     }
   }
 
+  function isMobileLightboxNav() {
+    return window.matchMedia('(max-width: 900px)').matches || window.matchMedia('(pointer: coarse)').matches;
+  }
+
+  if (galleryLightboxFigure) {
+    galleryLightboxFigure.addEventListener('click', function(event) {
+      if (!galleryLightbox || !galleryLightbox.classList.contains('active')) return;
+      if (!isMobileLightboxNav()) return;
+      var interactive = event.target.closest('.gallery-lightbox-close, .gallery-lightbox-prev, .gallery-lightbox-next');
+      if (interactive) return;
+      var rect = galleryLightboxFigure.getBoundingClientRect();
+      var clickX = event.clientX - rect.left;
+      if (clickX < rect.width / 2) {
+        showPrevGalleryImage();
+      } else {
+        showNextGalleryImage();
+      }
+    });
+  }
+
   if (galleryLightbox) {
     galleryLightbox.addEventListener('touchstart', onLightboxTouchStart, { passive: true });
     galleryLightbox.addEventListener('touchend', onLightboxTouchEnd, { passive: true });
@@ -397,7 +318,6 @@
       }
     }, { passive: false });
   }
-
   /* ─── Video modal ─── */
   var videoModal = document.getElementById('videoModal');
   var videoContent = document.getElementById('videoModalContent');

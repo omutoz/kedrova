@@ -101,14 +101,18 @@
     max-width: 92vw;
     max-height: calc(100vh - 120px);
   }
-  .gallery-lightbox-prev { left: 8px; }
-  .gallery-lightbox-next { right: 8px; }
-  .gallery-lightbox-close,
   .gallery-lightbox-prev,
   .gallery-lightbox-next {
+    display: none;
+  }
+  .gallery-lightbox-close {
     width: 42px;
     height: 42px;
     font-size: 1.4rem;
+  }
+
+  .gallery-lightbox-figure {
+    cursor: pointer;
   }
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
