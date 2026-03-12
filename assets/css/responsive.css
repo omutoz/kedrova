@@ -23,8 +23,10 @@
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
 
-  .hero { min-height: 100svh; padding: 64px var(--padding-x) 60px; }
-  .hero-art { width: min(420px, 85vw); height: min(420px, 85vw); }
+  .hero { min-height: 100svh; padding: 0 var(--padding-x) 60px; }
+  .hero-bg { width: min(80vh, 100vw); }
+  .hero-content { margin-top: min(52vh, 75vw); }
+  .hero-name { text-shadow: 0 2px 32px rgba(0, 0, 0, 0.6); }
   .hero-play-btn { padding: 10px 24px; font-size: var(--small); }
 
   .disco-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -82,7 +84,8 @@
 
 @media (max-width: 400px) {
   :root { --h1: 1.5rem; --h2: 1.5rem; --section-gap: 64px; }
-  .hero-art { width: 90vw; height: 90vw; }
+  .hero-bg { width: 100vw; }
+  .hero-content { margin-top: min(48vh, 85vw); }
   .disco-grid { gap: 12px; }
   .gallery-item {
     flex: 0 0 78vw;

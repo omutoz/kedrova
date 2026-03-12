@@ -1,61 +1,228 @@
 /* ═══════════════════════════════════════
-   HERO
+   HERO — Immersive
    ═══════════════════════════════════════ */
 
 .hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center;
-  padding: 72px var(--padding-x) 80px; position: relative; overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0 var(--padding-x) 80px;
+  overflow: hidden;
+  background: var(--bg-primary);
 }
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 80%, rgba(26, 35, 50, 0.6) 0%, var(--bg-primary) 70%);
-  pointer-events: none; z-index: 1;
+
+/* ─── Artwork as immersive background ─── */
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(72vh, 84vw);
+  aspect-ratio: 1;
+  z-index: 1;
+  overflow: hidden;
+  animation: heroEnterArt 1.8s ease-out both;
 }
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: heroBreathing 25s ease-in-out 2s infinite alternate;
+}
+
+/* ─── Vignette gradients — dissolve artwork into dark ─── */
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top,
+      var(--bg-primary) 0%,
+      rgba(11, 17, 32, 0.85) 18%,
+      rgba(11, 17, 32, 0.4) 40%,
+      transparent 60%
+    ),
+    linear-gradient(to right,
+      var(--bg-primary) 0%,
+      transparent 25%
+    ),
+    linear-gradient(to left,
+      var(--bg-primary) 0%,
+      transparent 25%
+    ),
+    linear-gradient(to bottom,
+      rgba(11, 17, 32, 0.5) 0%,
+      transparent 20%
+    );
+  z-index: 2;
+  pointer-events: none;
+  animation: heroEnterVignette 1.2s ease 0.3s both;
+}
+
+/* ─── Content layer — overlaps bottom of artwork ─── */
+
 .hero-content {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 32px;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: min(52vh, 60vw);
+  padding-bottom: 24px;
 }
-.hero-art {
-  width: min(572px, 80vw); height: min(572px, 80vw);
-  border-radius: 8px; overflow: hidden; position: relative;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 0 120px rgba(200, 169, 96, 0.06);
-  margin-bottom: 8px;
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.5);
+  animation: heroEnterText 0.9s var(--ease-out) 0.6s both;
 }
-.hero-art img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: var(--caption);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 16px;
+  animation: heroEnterTextSmall 0.8s var(--ease-out) 0.85s both;
+}
 
 .hero-play-btn {
-  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
   padding: 12px 32px;
-  font-family: var(--font-body); font-size: var(--caption); font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light);
-  background: rgba(11, 17, 32, 0.65); backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 2px;
-  cursor: pointer; transition: all 0.3s var(--ease); z-index: 3;
+  font-family: var(--font-body);
+  font-size: var(--caption);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+  animation: heroEnterCTA 0.7s var(--ease-out) 1.1s both;
 }
 .hero-play-btn:hover {
-  background: var(--gold); color: var(--bg-primary);
+  background: var(--gold);
+  color: var(--bg-primary);
   border-color: var(--gold);
+  box-shadow: 0 4px 24px rgba(200, 169, 96, 0.25);
 }
-.hero-play-btn svg { width: 14px; height: 14px; fill: currentColor; }
-.hero-name {
-  font-family: var(--font-display); font-size: var(--h1); font-weight: 300;
-  letter-spacing: 0.25em; color: var(--text-light); text-transform: uppercase; line-height: 1;
-}
-.hero-tagline {
-  font-family: var(--font-body); font-size: var(--caption); font-weight: 400;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-top: -8px;
+.hero-play-btn svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
 }
 
+/* ─── Scroll hint ─── */
+
 .hero-scroll-hint {
-  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: var(--text-muted); font-size: var(--small); letter-spacing: 0.1em;
-  animation: float 3s ease-in-out infinite;
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: var(--small);
+  letter-spacing: 0.1em;
+  animation: heroEnterHint 1s ease 1.8s both, float 3s ease-in-out 2.8s infinite;
 }
-.hero-scroll-hint .line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text-muted), transparent); }
+.hero-scroll-hint .line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--text-muted), transparent);
+}
+
+/* ─── Entrance keyframes ─── */
+
+@keyframes heroEnterArt {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes heroEnterVignette {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heroEnterText {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroEnterTextSmall {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroEnterCTA {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroEnterHint {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Living artwork — breathing ─── */
+
+@keyframes heroBreathing {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+/* ─── Scroll-hint float ─── */
+
 @keyframes float {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(8px); }
