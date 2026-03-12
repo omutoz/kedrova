@@ -140,7 +140,7 @@
     galleryCurrentIndex = (index + galleryImages.length) % galleryImages.length;
     var currentImage = galleryImages[galleryCurrentIndex];
     galleryLightboxImage.src = currentImage.src;
-    galleryLightboxImage.alt = currentImage.alt || 'K.E.D.R.O.V.A';
+    galleryLightboxImage.alt = currentImage.alt || 'KEDROVA';
   }
 
   function openGalleryLightbox(index) {
@@ -177,7 +177,7 @@
       if (galleryImage) {
         galleryImages.push({
           src: galleryImage.getAttribute('src'),
-          alt: galleryImage.getAttribute('alt') || 'K.E.D.R.O.V.A'
+          alt: galleryImage.getAttribute('alt') || 'KEDROVA'
         });
       }
     }
@@ -340,6 +340,13 @@
   var themeToggle = document.getElementById('themeToggle');
   var themeToggleMobile = document.getElementById('themeToggleMobile');
   var currentTheme = 'dark';
+  var storedTheme = null;
+
+  try {
+    storedTheme = window.localStorage.getItem('kedrova-theme');
+  } catch (themeStorageError) {
+    storedTheme = null;
+  }
 
   function syncThemeButtons() {
     var isLight = currentTheme === 'light';
@@ -359,11 +366,19 @@
     syncThemeButtons();
   }
 
-  function toggleTheme() {
-    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  function persistTheme() {
+    try {
+      window.localStorage.setItem('kedrova-theme', currentTheme);
+    } catch (themeStorageError) {}
   }
 
-  syncThemeButtons();
+  function toggleTheme() {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    persistTheme();
+    window.location.reload();
+  }
+
+  applyTheme(storedTheme === 'light' ? 'light' : 'dark');
 
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
@@ -389,11 +404,8 @@
     for (var n = 0; n < els.length; n++) {
       var el = els[n];
       var val = el.getAttribute(attr);
-      if (val === null || el.tagName === 'BUTTON') continue;
-      var span = el.querySelector('span');
-      if (span && el.classList.contains('hero-cta')) {
-        span.textContent = val;
-      } else if (val.indexOf('<') !== -1) {
+      if (val === null) continue;
+      if (val.indexOf('<') !== -1) {
         el.innerHTML = val;
       } else {
         el.textContent = val;
