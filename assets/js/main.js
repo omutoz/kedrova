@@ -117,7 +117,7 @@
       galleryScrollRaf = 0;
       return;
     }
-    galleryTrack.scrollLeft += diff * 0.18;
+    galleryTrack.scrollLeft += diff * 0.28;
     galleryScrollRaf = window.requestAnimationFrame(runGalleryMomentum);
   }
 
@@ -197,7 +197,7 @@
 
       if ((scrollingTowardStart && !atStart) || (scrollingTowardEnd && !atEnd)) {
         event.preventDefault();
-        queueGalleryScroll(dominantDelta * 4.8);
+        queueGalleryScroll(dominantDelta * 8);
       }
     }, { passive: false });
 
