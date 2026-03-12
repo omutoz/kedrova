@@ -3,7 +3,7 @@
    ═══════════════════════════════════════ */
 
 .section-tour { padding: var(--section-gap) 0; background: var(--bg-primary); }
-.tour-empty { text-align: center; }
+.tour-empty { text-align: center; max-width: 560px; margin: 0 auto; padding: 34px 26px; border-radius: var(--radius-card); background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft-light); }
 .tour-empty p { font-size: var(--body); color: var(--text-muted); margin-bottom: 12px; }
 .tour-contact { font-size: var(--caption); }
 .tour-contact a {

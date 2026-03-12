@@ -25,9 +25,14 @@
   --body: 1.0625rem;
   --caption: 0.8125rem;
   --small: 0.75rem;
-  --max-width: 1240px;
+  --max-width: 1280px;
   --padding-x: 32px;
-  --section-gap: 140px;
+  --section-gap: 104px;
+  --section-gap-tablet: 72px;
+  --section-gap-mobile: 44px;
+  --radius-card: 24px;
+  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.18);
+  --shadow-soft-light: 0 16px 36px rgba(16, 24, 40, 0.08);
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 0.6s;
@@ -39,8 +44,8 @@
 
 body.theme-light {
   --bg-primary: #F5F2ED;
-  --bg-secondary: #F5F2ED;
-  --bg-elevated: #FFFFFF;
+  --bg-secondary: #EEE8DF;
+  --bg-elevated: #FFFCF7;
   --bg-light: #0B1120;
   --bg-white: #FFFFFF;
   --gold-dim: rgba(200, 169, 96, 0.12);
@@ -209,4 +214,48 @@ body.theme-light .theme-toggle:hover {
 body.theme-light .theme-toggle::before {
   background: rgba(0, 0, 0, 0.06);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+
+body.theme-light .section-kicker,
+body.theme-light .footer-player-shell__copy {
+  color: var(--text-dark-muted);
+}
+
+body.theme-light .footer-player-shell {
+  background: rgba(255,255,255,0.76);
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-soft-light);
+}
+
+body.theme-light .footer-player-shell__eyebrow,
+body.theme-light .disco-badge {
+  color: #7c6228;
+  background: rgba(200, 169, 96, 0.16);
+  border-color: rgba(200, 169, 96, 0.28);
+}
+
+body.theme-light .footer-player-shell__controls button {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  color: var(--text-light);
+}
+
+body.theme-light .footer-player-shell__controls button.is-primary {
+  background: linear-gradient(180deg, #d9bb7e 0%, #c8a960 100%);
+  color: #0B1120;
+  border-color: rgba(194, 160, 92, 0.98);
+}
+
+
+body.theme-light .footer-player-shell__progress-track {
+  background: rgba(26, 34, 56, 0.12);
+}
+
+body.theme-light .footer-player-shell__progress-fill {
+  background: linear-gradient(90deg, rgba(208, 173, 102, 0.92), rgba(188, 151, 76, 0.98));
+}
+
+body.theme-light .footer-player-shell__progress-time {
+  color: rgba(26, 34, 56, 0.64);
 }
