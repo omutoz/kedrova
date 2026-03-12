@@ -58,26 +58,19 @@ body.theme-light .header {
 body.theme-light .header.scrolled {
   background-color: rgba(245, 242, 237, 0.94);
 }
-body.theme-light .hero-bg::after {
+body.theme-light .hero::before {
   background:
-    linear-gradient(to top,
-      #F5F2ED 0%,
-      rgba(245, 242, 237, 0.85) 18%,
-      rgba(245, 242, 237, 0.4) 40%,
-      transparent 60%
-    ),
-    linear-gradient(to right,
-      #F5F2ED 0%,
-      transparent 25%
-    ),
-    linear-gradient(to left,
-      #F5F2ED 0%,
-      transparent 25%
-    ),
-    linear-gradient(to bottom,
-      rgba(245, 242, 237, 0.5) 0%,
-      transparent 20%
-    );
+    radial-gradient(circle at 50% 18%, rgba(200, 169, 96, 0.14), transparent 36%),
+    linear-gradient(to bottom, rgba(245, 242, 237, 0.08) 0%, rgba(245, 242, 237, 0.46) 56%, var(--bg-primary) 100%),
+    radial-gradient(circle at 50% 56%, rgba(245, 242, 237, 0) 0%, rgba(245, 242, 237, 0.12) 50%, rgba(245, 242, 237, 0.78) 82%, var(--bg-primary) 100%);
+}
+body.theme-light .hero::after {
+  background:
+    linear-gradient(to right, var(--bg-primary) 0%, rgba(245, 242, 237, 0.12) 22%, rgba(245, 242, 237, 0.12) 78%, var(--bg-primary) 100%),
+    linear-gradient(to bottom, rgba(245, 242, 237, 0.06) 0%, rgba(245, 242, 237, 0) 22%, rgba(245, 242, 237, 0) 60%, var(--bg-primary) 100%);
+}
+body.theme-light .hero-bg-media img {
+  filter: saturate(0.96) brightness(0.93);
 }
 body.theme-light .video-label,
 body.theme-light .disco-meta,
@@ -167,14 +160,4 @@ body.theme-light .theme-toggle:hover {
 body.theme-light .theme-toggle::before {
   background: rgba(0, 0, 0, 0.06);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-body.theme-light .hero-name {
-  text-shadow: 0 2px 40px rgba(245, 242, 237, 0.5);
-}
-body.theme-light .hero-play-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-body.theme-light .hero-bg img {
-  opacity: 0.88;
 }
