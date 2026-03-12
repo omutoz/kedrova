@@ -52,36 +52,61 @@
 
 .theme-toggle {
   position: relative;
-  width: 52px;
+  width: 56px;
   height: 28px;
   border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
   margin-left: 10px;
-  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  overflow: hidden;
 }
 .theme-toggle:hover {
-  border-color: rgba(200, 169, 96, 0.28);
-  box-shadow: 0 0 0 4px rgba(200, 169, 96, 0.06);
+  border-color: rgba(200, 169, 96, 0.3);
+  box-shadow: 0 0 0 3px rgba(200, 169, 96, 0.06);
 }
 .theme-toggle::before {
   content: '';
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 20px;
+  width: 22px;
   height: 20px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--text-light), rgba(200, 169, 96, 0.9));
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
-  transition: transform 0.3s var(--ease-out), background 0.3s var(--ease-out);
-}
-.theme-toggle[aria-pressed="true"] {
-  background: rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s var(--ease-out), background 0.4s var(--ease-out);
+  transform: translateX(26px);
+  z-index: 1;
 }
 .theme-toggle[aria-pressed="true"]::before {
-  transform: translateX(24px);
-  background: linear-gradient(135deg, var(--gold), #fff7de);
+  transform: translateX(0);
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.theme-icon {
+  position: relative;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: opacity 0.4s var(--ease), color 0.4s var(--ease);
+}
+.theme-icon-sun {
+  color: rgba(255, 255, 255, 0.3);
+}
+.theme-icon-moon {
+  color: rgba(200, 169, 96, 0.9);
+}
+.theme-toggle[aria-pressed="true"] .theme-icon-sun {
+  color: var(--gold);
+}
+.theme-toggle[aria-pressed="true"] .theme-icon-moon {
+  color: rgba(0, 0, 0, 0.25);
 }
 
 .hamburger { display: none; flex-direction: column; gap: 5px; width: 24px; padding: 4px 0; }
