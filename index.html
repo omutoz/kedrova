@@ -87,18 +87,26 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="assets/images/girls_heart_cover_01.jpg" alt="" width="1080" height="1080">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-media">
+      <img src="assets/images/girls_heart_cover_01.jpg" alt="" width="1080" height="1080">
+    </div>
   </div>
+
   <div class="hero-content">
     <h1 class="hero-name">KEDROVA</h1>
     <p class="hero-tagline" data-ua="One Man Band" data-en="One Man Band">One Man Band</p>
+
     <button class="hero-play-btn" data-spotify="0Znx9EMHd3YQr9eR6H6Dbx" aria-label="Play Серце дівоче">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      <span>Серце дівоче</span>
+      <span class="hero-play-btn-textwrap">
+        <span class="hero-play-btn-label hero-play-btn-label-default" data-ua="Останній реліз" data-en="Latest release">Останній реліз</span>
+        <span class="hero-play-btn-label hero-play-btn-label-hover" data-ua="СЕРЦЕ ДІВОЧЕ" data-en="СЕРЦЕ ДІВОЧЕ">СЕРЦЕ ДІВОЧЕ</span>
+      </span>
     </button>
   </div>
-  <div class="hero-scroll-hint"><div class="line"></div></div>
+
+  <div class="hero-scroll-hint" aria-hidden="true"><div class="line"></div></div>
 </section>
 
 <!-- MUSIC -->
