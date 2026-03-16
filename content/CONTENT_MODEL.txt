@@ -1,0 +1,1 @@
+Public runtime rendering uses JSON files in this directory as the source of truth. Editorial markdown is kept under content/editorial/ for future CMS and drafting workflows and is not used directly by the public runtime.

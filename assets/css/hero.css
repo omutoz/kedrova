@@ -305,3 +305,21 @@
     transform: translateX(-50%) translateY(8px);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero-bg-media,
+  .hero-name,
+  .hero-tagline,
+  .hero-play-btn,
+  .hero-scroll-hint {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .hero-bg-media img {
+    animation: none !important;
+    transform: none !important;
+  }
+}

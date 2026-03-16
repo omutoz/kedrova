@@ -259,3 +259,31 @@ body.theme-light .footer-player-shell__progress-fill {
 body.theme-light .footer-player-shell__progress-time {
   color: rgba(26, 34, 56, 0.64);
 }
+
+
+body.theme-light .sticky-player {
+  background: rgba(255,255,255,0.88);
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-soft-light);
+}
+body.theme-light .sticky-player__meta,
+body.theme-light .sticky-player__progress-label,
+body.theme-light .sticky-player__dismiss {
+  color: rgba(26, 34, 56, 0.64);
+}
+body.theme-light .sticky-player__btn,
+body.theme-light .sticky-player__link {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  color: var(--text-light);
+}
+body.theme-light .sticky-player__btn.is-primary {
+  background: linear-gradient(180deg, #d9bb7e 0%, #c8a960 100%);
+  color: #0B1120;
+}
+body.theme-light .sticky-player__progress {
+  background: rgba(26, 34, 56, 0.12);
+}
+body.theme-light .sticky-player__progress-fill {
+  background: linear-gradient(90deg, rgba(208, 173, 102, 0.92), rgba(188, 151, 76, 0.98));
+}

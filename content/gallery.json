@@ -1,0 +1,77 @@
+[
+  {
+    "image": "assets/images/gallery_01.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 1"
+  },
+  {
+    "image": "assets/images/gallery_02.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 2"
+  },
+  {
+    "image": "assets/images/gallery_03.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 3"
+  },
+  {
+    "image": "assets/images/gallery_04.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 4"
+  },
+  {
+    "image": "assets/images/gallery_05.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 5"
+  },
+  {
+    "image": "assets/images/gallery_06.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 6"
+  },
+  {
+    "image": "assets/images/gallery_07.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 7"
+  },
+  {
+    "image": "assets/images/gallery_08.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 8"
+  },
+  {
+    "image": "assets/images/gallery_09.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 9"
+  },
+  {
+    "image": "assets/images/gallery_10.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 10"
+  },
+  {
+    "image": "assets/images/gallery_11.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 11"
+  },
+  {
+    "image": "assets/images/gallery_12.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 12"
+  },
+  {
+    "image": "assets/images/gallery_13.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 13"
+  },
+  {
+    "image": "assets/images/gallery_14.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 14"
+  },
+  {
+    "image": "assets/images/gallery_15.jpg",
+    "alt": "KEDROVA",
+    "label": "Фото 15"
+  }
+]

@@ -1,0 +1,119 @@
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{{prefix}}index.html#hero" class="header-logo">
+          <img src="{{prefix}}assets/images/logo_01.png" alt="KEDROVA" width="44" height="44">
+          <span class="header-logo-text">KEDROVA</span>
+        </a>
+        <p data-ua="One Man Band<br>Київ, Україна" data-en="One Man Band<br>Kyiv, Ukraine" style="color: var(--gold)">One Man Band<br>Київ, Україна</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-ua="Слухати" data-en="Listen">Слухати</div>
+        <ul class="footer-links">
+          <li><a href="https://open.spotify.com/artist/5HnrXbE5dYA9wdMS6eerh0" target="_blank" rel="noopener">Spotify</a></li>
+          <li><a href="https://music.apple.com/ua/artist/kedrova/1648461230" target="_blank" rel="noopener">Apple Music</a></li>
+          <li><a href="https://soundcloud.com/k_e_d_r_o_v_a" target="_blank" rel="noopener">SoundCloud</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-ua="Соціальні мережі" data-en="Social">Соціальні мережі</div>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/k.e.d.r.o.v.a" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/kedrova" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@k.e.d.r.o.v.a" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-ua="Контакти" data-en="Contact">Контакти</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@kedrova.music">info@kedrova.music</a></li>
+        </ul>
+        <div class="footer-col-title" style="margin-top: 24px;" data-ua="Букінг" data-en="Booking">Букінг</div>
+        <ul class="footer-links">
+          <li><a href="mailto:katrine@ninjamusic.io">katrine@ninjamusic.io</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-player-shell reveal" aria-label="Player system foundation">
+      <div class="footer-player-shell__meta">
+        <span class="footer-player-shell__eyebrow" data-ua="Плейлист" data-en="Playlist">Playlist</span>
+        <div>
+          <div class="footer-player-shell__title" data-ua="Прев’ю плеєра" data-en="Music player preview">Music player preview</div>
+          <p class="footer-player-shell__copy" data-ua="Плеєр уже зарезервовано в інтерфейсі.<br>Тут можна буде прослуховувати повні версії треків." data-en="The player space is already reserved in the interface.<br>Full versions of tracks can be played here later.">Плеєр уже зарезервовано в інтерфейсі.<br>Тут можна буде прослуховувати повні версії треків.</p>
+        </div>
+      </div>
+      <div class="footer-player-shell__controls" aria-hidden="true">
+        <div class="footer-player-shell__progress" role="presentation">
+          <span class="footer-player-shell__progress-track"><span class="footer-player-shell__progress-fill"></span></span>
+          <span class="footer-player-shell__progress-time">00:34 / 03:12</span>
+        </div>
+        <button type="button"><span>◀</span></button>
+        <button type="button" class="is-primary"><span>▶</span></button>
+        <button type="button"><span>▶▶</span></button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 KEDROVA</span>
+      <span data-ua="Усі права захищено" data-en="All rights reserved">Усі права захищено</span>
+    </div>
+  </div>
+</footer>
+<div class="sticky-player" id="stickyPlayer" hidden aria-label="Playlist bar">
+  <button class="sticky-player__dismiss" id="stickyPlayerDismiss" type="button" aria-label="Hide release launcher">&times;</button>
+  <div class="sticky-player__main">
+    <img class="sticky-player__cover" id="stickyPlayerCover" src="" alt="">
+    <div class="sticky-player__text">
+      <span class="sticky-player__eyebrow" data-ua="Плейлист" data-en="Playlist">Playlist</span>
+      <div class="sticky-player__title" id="stickyPlayerTitle">KEDROVA</div>
+      <div class="sticky-player__meta" id="stickyPlayerMeta">Release • 2026</div>
+    </div>
+  </div>
+  <div class="sticky-player__controls">
+    <div>
+      <div class="sticky-player__progress" aria-hidden="true"><span class="sticky-player__progress-fill" id="stickyPlayerProgressFill"></span></div>
+      <div class="sticky-player__progress-label" id="stickyPlayerProgressLabel">1 / 1</div>
+    </div>
+    <div class="sticky-player__transport">
+      <button class="sticky-player__btn" id="stickyPlayerPrev" type="button" aria-label="Previous release">&#9664;</button>
+      <button class="sticky-player__btn is-primary" id="stickyPlayerPrimary" type="button" aria-label="Open current release">&#9654;</button>
+      <button class="sticky-player__btn" id="stickyPlayerNext" type="button" aria-label="Next release">&#9654;&#9654;</button>
+    </div>
+    <input class="sticky-player__volume" id="stickyPlayerVolume" type="range" min="0" max="100" value="72" aria-label="Reserved for future audio playback">
+    <div class="sticky-player__links">
+      <a class="sticky-player__link" id="stickyPlayerListen" href="#" data-ua="Сторінка прослуховування" data-en="Listen page">Listen page</a>
+      <a class="sticky-player__link" id="stickyPlayerSpotify" href="#" target="_blank" rel="noopener" data-ua="Spotify" data-en="Spotify">Spotify</a>
+    </div>
+  </div>
+  <div class="sr-only" id="stickyPlayerStatus" aria-live="polite"></div>
+</div>
+
+<div class="modal-backdrop" id="videoModal" aria-hidden="true">
+  <div class="sr-only" id="videoModalTitle">Video player</div>
+  <button class="modal-close" id="videoModalClose" aria-label="Close">&times;</button>
+  <div class="modal-content" id="videoModalContent" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle" tabindex="-1"></div>
+</div>
+<div class="modal-backdrop" id="spotifyModal" aria-hidden="true">
+  <div class="sr-only" id="spotifyModalTitle">Spotify player</div>
+  <button class="modal-close" id="spotifyModalClose" aria-label="Close">&times;</button>
+  <div class="modal-content-spotify" id="spotifyModalContent" role="dialog" aria-modal="true" aria-labelledby="spotifyModalTitle" tabindex="-1"></div>
+</div>
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-labelledby="galleryLightboxTitle" aria-hidden="true">
+  <div class="sr-only" id="galleryLightboxTitle">Gallery image viewer</div>
+  <button class="gallery-lightbox-close" id="galleryLightboxClose" type="button" aria-label="Закрити">&times;</button>
+  <button class="gallery-lightbox-prev" id="galleryLightboxPrev" type="button" aria-label="Попереднє фото">&#8249;</button>
+  <div class="gallery-lightbox-inner">
+    <figure class="gallery-lightbox-figure">
+      <img class="gallery-lightbox-image" id="galleryLightboxImage" src="" alt="KEDROVA">
+    </figure>
+  </div>
+  <button class="gallery-lightbox-next" id="galleryLightboxNext" type="button" aria-label="Наступне фото">&#8250;</button>
+</div>
+<script src="{{prefix}}assets/js/utils.js" defer></script>
+<script src="{{prefix}}assets/js/core.js" defer></script>
+<script src="{{prefix}}assets/js/menu.js" defer></script>
+<script src="{{prefix}}assets/js/gallery.js" defer></script>
+<script src="{{prefix}}assets/js/modals.js" defer></script>
+<script src="{{prefix}}assets/js/theme.js" defer></script>
+<script src="{{prefix}}assets/js/language.js" defer></script>
+<script src="{{prefix}}assets/js/app.js" defer></script>
