@@ -1,0 +1,59 @@
+
+<div class="sticky-player" id="stickyPlayer" hidden aria-label="Release launcher bar">
+  <button class="sticky-player__dismiss" id="stickyPlayerDismiss" type="button" aria-label="Hide release launcher">&times;</button>
+  <div class="sticky-player__main">
+    <img class="sticky-player__cover" id="stickyPlayerCover" src="" alt="">
+    <div class="sticky-player__text">
+      <span class="sticky-player__eyebrow" data-ua="Release launcher" data-en="Release launcher">Release launcher</span>
+      <div class="sticky-player__title" id="stickyPlayerTitle">KEDROVA</div>
+      <div class="sticky-player__meta" id="stickyPlayerMeta">Release • 2026</div>
+    </div>
+  </div>
+  <div class="sticky-player__controls">
+    <div>
+      <div class="sticky-player__progress" aria-hidden="true"><span class="sticky-player__progress-fill" id="stickyPlayerProgressFill"></span></div>
+      <div class="sticky-player__progress-label" id="stickyPlayerProgressLabel">1 / 1</div>
+    </div>
+    <div class="sticky-player__transport">
+      <button class="sticky-player__btn" id="stickyPlayerPrev" type="button" aria-label="Previous release">&#9664;</button>
+      <button class="sticky-player__btn is-primary" id="stickyPlayerPrimary" type="button" aria-label="Open current release">&#9654;</button>
+      <button class="sticky-player__btn" id="stickyPlayerNext" type="button" aria-label="Next release">&#9654;&#9654;</button>
+    </div>
+    <input class="sticky-player__volume" id="stickyPlayerVolume" type="range" min="0" max="100" value="72" aria-label="Reserved for future audio playback">
+    <div class="sticky-player__links">
+      <a class="sticky-player__link" id="stickyPlayerListen" href="#" data-ua="Сторінка прослуховування" data-en="Listen page">Listen page</a>
+      <a class="sticky-player__link" id="stickyPlayerSpotify" href="#" target="_blank" rel="noopener" data-ua="Spotify" data-en="Spotify">Spotify</a>
+    </div>
+  </div>
+  <div class="sr-only" id="stickyPlayerStatus" aria-live="polite"></div>
+</div>
+
+<div class="modal-backdrop" id="videoModal" aria-hidden="true">
+  <div class="sr-only" id="videoModalTitle">Video player</div>
+  <button class="modal-close" id="videoModalClose" aria-label="Close">&times;</button>
+  <div class="modal-content" id="videoModalContent" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle" tabindex="-1"></div>
+</div>
+<div class="modal-backdrop" id="spotifyModal" aria-hidden="true">
+  <div class="sr-only" id="spotifyModalTitle">Spotify player</div>
+  <button class="modal-close" id="spotifyModalClose" aria-label="Close">&times;</button>
+  <div class="modal-content-spotify" id="spotifyModalContent" role="dialog" aria-modal="true" aria-labelledby="spotifyModalTitle" tabindex="-1"></div>
+</div>
+<div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-labelledby="galleryLightboxTitle" aria-hidden="true">
+  <div class="sr-only" id="galleryLightboxTitle">Gallery image viewer</div>
+  <button class="gallery-lightbox-close" id="galleryLightboxClose" type="button" aria-label="Закрити">&times;</button>
+  <button class="gallery-lightbox-prev" id="galleryLightboxPrev" type="button" aria-label="Попереднє фото">&#8249;</button>
+  <div class="gallery-lightbox-inner">
+    <figure class="gallery-lightbox-figure">
+      <img class="gallery-lightbox-image" id="galleryLightboxImage" src="" alt="KEDROVA">
+    </figure>
+  </div>
+  <button class="gallery-lightbox-next" id="galleryLightboxNext" type="button" aria-label="Наступне фото">&#8250;</button>
+</div>
+<script src="{{prefix}}assets/js/utils.js" defer></script>
+<script src="{{prefix}}assets/js/core.js" defer></script>
+<script src="{{prefix}}assets/js/menu.js" defer></script>
+<script src="{{prefix}}assets/js/gallery.js" defer></script>
+<script src="{{prefix}}assets/js/modals.js" defer></script>
+<script src="{{prefix}}assets/js/theme.js" defer></script>
+<script src="{{prefix}}assets/js/language.js" defer></script>
+<script src="{{prefix}}assets/js/app.js" defer></script>

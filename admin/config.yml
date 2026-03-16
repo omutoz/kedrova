@@ -1,0 +1,49 @@
+# Decap CMS scaffold for future editorial integration.
+# Runtime public content remains in content/*.json; this config is not yet a live production workflow.
+backend:
+  name: test-repo
+
+media_folder: "assets/images/uploads"
+public_folder: "assets/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Site pages (JSON)"
+    files:
+      - label: "Site text"
+        name: "site_text"
+        file: "content/pages.json"
+        fields:
+          - { label: "Raw JSON", name: "body", widget: "text" }
+  - name: "releases"
+    label: "Releases (JSON)"
+    files:
+      - label: "Release data"
+        name: "release_data"
+        file: "content/releases.json"
+        fields:
+          - { label: "Raw JSON", name: "body", widget: "text" }
+  - name: "videos"
+    label: "Videos (JSON)"
+    files:
+      - label: "Video data"
+        name: "video_data"
+        file: "content/videos.json"
+        fields:
+          - { label: "Raw JSON", name: "body", widget: "text" }
+  - name: "gallery"
+    label: "Gallery (JSON)"
+    files:
+      - label: "Gallery data"
+        name: "gallery_data"
+        file: "content/gallery.json"
+        fields:
+          - { label: "Raw JSON", name: "body", widget: "text" }
+  - name: "press"
+    label: "Press (JSON)"
+    files:
+      - label: "Press data"
+        name: "press_data"
+        file: "content/press.json"
+        fields:
+          - { label: "Raw JSON", name: "body", widget: "text" }

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace with final absolute URLs after the production domain is confirmed. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://omutoz.github.io/kedrova/</loc><priority>1.0</priority></url>
-  <url><loc>https://omutoz.github.io/kedrova/press.html</loc><priority>0.7</priority></url>
-  <url><loc>https://omutoz.github.io/kedrova/admin_test/</loc><priority>0.3</priority></url>
 </urlset>
