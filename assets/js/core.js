@@ -11,6 +11,13 @@
       window.addEventListener('scroll', onScroll, { passive: true });
     }
 
+    var clearHomepageHash = function () {
+      if (!document.body || document.body.getAttribute('data-route') !== 'home') return;
+      if (!window.history || typeof window.history.replaceState !== 'function') return;
+      var cleanPath = window.location.pathname + window.location.search;
+      window.history.replaceState(null, document.title, cleanPath || './');
+    };
+
     var anchors = Kedrova.qsa('a[href^="#"]');
     anchors.forEach(function (anchor) {
       anchor.addEventListener('click', function (event) {
@@ -21,11 +28,23 @@
         event.preventDefault();
         var position = target.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: position, behavior: Kedrova.getMotionPreference() ? 'auto' : 'smooth' });
+        clearHomepageHash();
         if (target.hasAttribute('tabindex') || /^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(target.tagName)) return;
         target.setAttribute('tabindex', '-1');
         target.focus({ preventScroll: true });
       });
     });
+
+    if (document.body && document.body.getAttribute('data-route') === 'home' && window.location.hash) {
+      var initialTarget = document.querySelector(window.location.hash);
+      if (initialTarget) {
+        var initialPosition = initialTarget.getBoundingClientRect().top + window.scrollY - 80;
+        window.requestAnimationFrame(function () {
+          window.scrollTo({ top: initialPosition, behavior: 'auto' });
+          clearHomepageHash();
+        });
+      }
+    }
 
     var reveals = Kedrova.qsa('.reveal');
     if (!reveals.length) return;
