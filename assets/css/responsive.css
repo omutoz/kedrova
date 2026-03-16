@@ -209,8 +209,13 @@
     bottom: 12px;
   }
   .sticky-player__controls {
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+  .sticky-player__transport {
+    flex-wrap: nowrap;
   }
 }
 
@@ -228,15 +233,21 @@
     width: 52px;
     height: 52px;
   }
+  .sticky-player__transport {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
   .sticky-player__links {
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .sticky-player__link {
-    flex: 1 1 140px;
+    flex: 1 1 0;
+    min-width: 0;
   }
   .sticky-player__volume {
     width: 100%;
-    max-width: 140px;
+    max-width: none;
   }
 }
