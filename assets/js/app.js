@@ -8,7 +8,8 @@
     'initMenu',
     'initGallery',
     'initModals',
-    'initPlayer'
+    'initPlayer',
+    'initHeroParallax'
   ];
   var start = function () {
     if (document.documentElement.dataset.kedrovaBooted === 'true') return;
