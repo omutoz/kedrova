@@ -58,27 +58,6 @@
   transform: translateY(22px) scale(1.2);
   transform-origin: center center;
   animation: heroArtworkIn 4s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: auto;
-}
-
-.hero-bg-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at var(--mx, 50%) var(--my, 50%),
-    rgba(255, 255, 255, 0.09) 0%,
-    transparent 55%
-  );
-  pointer-events: none;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.hero-bg-media.parallax-active::after {
-  opacity: 1;
 }
 
 .hero-bg-media img {
