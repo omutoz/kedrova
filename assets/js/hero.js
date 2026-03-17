@@ -6,7 +6,8 @@
     if (Kedrova.getMotionPreference()) return;
 
     var media = document.querySelector('.hero-bg-media');
-    if (!media) return;
+    var heroSection = document.getElementById('hero');
+    if (!media || !heroSection) return;
 
     var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     var active = false;
@@ -34,25 +35,23 @@
     };
 
     var resetToZero = function () {
+      media.classList.remove('parallax-active');
       targetX = 0;
       targetY = 0;
-      if (!active) {
-        active = true;
-        tick();
-      }
-      // Stop loop once settled
+      cancelAnimationFrame(rafId);
       var stopWhenSteady = function () {
+        currentX = lerp(currentX, 0, LERP);
+        currentY = lerp(currentY, 0, LERP);
+        applyTransform();
         if (Math.abs(currentX) < 0.02 && Math.abs(currentY) < 0.02) {
           active = false;
           currentX = 0;
           currentY = 0;
           media.style.transform = '';
-          cancelAnimationFrame(rafId);
           return;
         }
         rafId = requestAnimationFrame(stopWhenSteady);
       };
-      cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(stopWhenSteady);
     };
 
@@ -62,14 +61,13 @@
       var cy = rect.top + rect.height / 2;
       var dx = (e.clientX - cx) / (rect.width / 2);
       var dy = (e.clientY - cy) / (rect.height / 2);
-      // Clamp to ±1
       dx = Math.max(-1, Math.min(1, dx));
       dy = Math.max(-1, Math.min(1, dy));
       targetX = dy * -MAX_DEG;
       targetY = dx * MAX_DEG;
-      // Update light position
       media.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
       media.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      media.classList.add('parallax-active');
       if (!active) {
         active = true;
         tick();
@@ -80,12 +78,10 @@
       resetToZero();
     };
 
-    // Device orientation (mobile gyroscope)
     var onDeviceOrientation = function (e) {
       if (e.gamma === null || e.beta === null) return;
-      // gamma: left/right tilt (-90 to 90), beta: front/back tilt (-180 to 180)
       var dx = Math.max(-1, Math.min(1, e.gamma / 20));
-      var dy = Math.max(-1, Math.min(1, (e.beta - 30) / 20)); // 30 = natural hold angle
+      var dy = Math.max(-1, Math.min(1, (e.beta - 30) / 20));
       targetX = dy * -MAX_DEG;
       targetY = dx * MAX_DEG;
       if (!active) {
@@ -95,34 +91,32 @@
     };
 
     var attachListeners = function () {
+      // Bug #3 fix: explicitly end CSS animation before JS takes over transform
+      media.style.animation = 'none';
+      media.style.opacity = '1';
+      media.style.transform = '';
+
       if (isTouchDevice) {
-        // iOS 13+ requires permission
         if (typeof DeviceOrientationEvent !== 'undefined' &&
             typeof DeviceOrientationEvent.requestPermission === 'function') {
-          // Can only request from user gesture — skip auto-attach,
-          // attach on first touchstart as a one-time trigger
-          var requestOnce = function () {
+          document.addEventListener('touchstart', function () {
             DeviceOrientationEvent.requestPermission().then(function (state) {
               if (state === 'granted') {
                 window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
               }
             }).catch(function () {});
-            document.removeEventListener('touchstart', requestOnce);
-          };
-          document.addEventListener('touchstart', requestOnce, { once: true, passive: true });
+          }, { once: true, passive: true });
         } else if (typeof DeviceOrientationEvent !== 'undefined') {
-          // Android / older iOS — no permission needed
           window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
         }
-        // No mousemove on touch
       } else {
         document.addEventListener('mousemove', onMouseMove, { passive: true });
-        media.addEventListener('mouseleave', onMouseLeave);
+        // Bug #2 fix: mouseleave on heroSection, not media
+        heroSection.addEventListener('mouseleave', onMouseLeave);
       }
     };
 
-    // heroArtworkIn duration = 4s (defined in hero.css)
-    // Attach listeners after animation completes + small buffer
+    // heroArtworkIn = 4s, attach after animation completes
     setTimeout(attachListeners, 4200);
   };
 })();
