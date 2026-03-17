@@ -59,6 +59,7 @@
   transform-origin: center center;
   animation: heroArtworkIn 4s cubic-bezier(0.16, 1, 0.3, 1) 0s forwards;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: auto;
 }
 
 .hero-bg-media::after {
@@ -76,7 +77,7 @@
   transition: opacity 0.5s ease;
 }
 
-.hero-bg-media:hover::after {
+.hero-bg-media.parallax-active::after {
   opacity: 1;
 }
 
