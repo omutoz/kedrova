@@ -47,7 +47,7 @@
           active = false;
           currentX = 0;
           currentY = 0;
-          media.style.transform = '';
+          media.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
           return;
         }
         rafId = requestAnimationFrame(stopWhenSteady);
@@ -94,7 +94,7 @@
       // Bug #3 fix: explicitly end CSS animation before JS takes over transform
       media.style.animation = 'none';
       media.style.opacity = '1';
-      media.style.transform = '';
+      media.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
 
       if (isTouchDevice) {
         if (typeof DeviceOrientationEvent !== 'undefined' &&
