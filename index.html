@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script>(function(){var root=document.documentElement;root.style.visibility='hidden';try{var t=localStorage.getItem('kedrova-theme');var theme=t==='light'?'light':'dark';root.dataset.theme=theme;document.addEventListener('DOMContentLoaded',function(){document.body.classList.toggle('theme-light',theme==='light');document.body.classList.add('theme-ready');root.style.visibility='';},{once:true});}catch(e){document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('theme-ready');root.style.visibility='';},{once:true});}})();</script>
+<script>(function(){document.documentElement.style.visibility='hidden';document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('theme-ready');document.documentElement.style.visibility='';},{once:true});})();</script>
 <title>KEDROVA — One Man Band</title>
 <meta content="KEDROVA — київська артистка, авторка і продюсер. Dark indie electronic, ethereal pop, angelic vocals." name="description"/>
 <meta content="KEDROVA, KEDROVA, Кедрова, dark electronic, ethereal pop, Ukrainian music, indie electronic, one man band" name="keywords"/>
@@ -71,7 +71,6 @@
 <a data-en="Press" data-ua="Преса" href="#press">Преса</a>
 <a data-en="Contacts" data-ua="Контакти" href="#contacts">Контакти</a>
 <button aria-label="Switch language" class="lang-toggle" id="langToggle" type="button">ENG</button>
-<button aria-label="Перемкнути тему" aria-pressed="false" class="theme-toggle" id="themeToggle" type="button"><svg class="theme-icon theme-icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg><svg class="theme-icon theme-icon-moon" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
 </nav>
 <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="hamburger" id="hamburger" type="button">
 <span></span><span></span><span></span>
@@ -87,7 +86,6 @@
 <a data-en="Contacts" data-ua="Контакти" href="#contacts">Контакти</a>
 <div style="display:flex; align-items:center; gap:10px;">
 <button aria-label="Switch language" class="lang-toggle" id="langToggleMobile" type="button">ENG</button>
-<button aria-label="Перемкнути тему" aria-pressed="false" class="theme-toggle" id="themeToggleMobile" type="button"><svg class="theme-icon theme-icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="12" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg><svg class="theme-icon theme-icon-moon" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
 </div>
 </div>
 <main id="main-content">
@@ -335,8 +333,10 @@
 <h2 class="sr-only" id="tour-heading">Events</h2>
 </div>
 <div class="tour-empty reveal">
-<p data-en="No upcoming dates" data-ua="Найближчих дат немає">Найближчих дат немає</p>
+<p data-en="Concerts and performances — on request." data-ua="Концерти та виступи — за запитом.">Концерти та виступи — за запитом.</p>
 <p class="tour-contact">Букінг: <a href="mailto:katrine@ninjamusic.io">katrine@ninjamusic.io</a></p>
+<p style="margin-top: 24px;" data-en="Music lives at night." data-ua="Музика живе вночі.">Музика живе вночі.</p>
+<p data-en="Where the next stop is — be the first to know on <a href='https://www.instagram.com/k.e.d.r.o.v.a' target='_blank' rel='noopener'>Instagram</a>." data-ua="Де наступна зупинка — <a href='https://www.instagram.com/k.e.d.r.o.v.a' target='_blank' rel='noopener'>дізнаєшся першим в Instagram</a>.">Де наступна зупинка — <a href="https://www.instagram.com/k.e.d.r.o.v.a" target="_blank" rel="noopener">дізнаєшся першим в Instagram</a>.</p>
 </div>
 </div>
 </section>
