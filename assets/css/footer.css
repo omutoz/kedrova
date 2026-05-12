@@ -203,3 +203,7 @@
   position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: var(--text-muted);
 }
+
+
+/* Footer player — hidden from UI, preserved in code */
+.footer-player-shell { display: none; }

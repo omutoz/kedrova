@@ -11,3 +11,9 @@
   transition: border-color 0.3s var(--ease);
 }
 .tour-contact a:hover { border-bottom-color: var(--gold); }
+.tour-empty p a {
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+}
+.tour-empty p a:hover { border-bottom-color: var(--gold); }
